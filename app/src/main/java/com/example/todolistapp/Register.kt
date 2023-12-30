@@ -11,11 +11,22 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Firebase
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 
 class Register : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val intent = Intent(this@Register, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -48,18 +59,9 @@ class Register : AppCompatActivity() {
                     }
                 }
             }
-//            btnGoogleRegister.setOnClickListener {
-//                signInRequest = BeginSignInRequest.builder()
-//                    .setGoogleIdTokenRequestOptions(
-//                        BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-//                            .setSupported(true)
-//                            // Your server's client ID, not your Android client ID.
-//                            .setServerClientId(getString(R.string.your_web_client_id))
-//                            // Only show accounts previously used to sign in.
-//                            .setFilterByAuthorizedAccounts(true)
-//                            .build())
-//                    .build()
-//            }
+            btnGoogleRegister.setOnClickListener {
+
+            }
         }
     }
 }
