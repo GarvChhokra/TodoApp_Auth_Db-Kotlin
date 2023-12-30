@@ -16,4 +16,5 @@
     <string name="register">Register</string>
     <string name="register_with_google">Register with Google</string>
     <string name="register_with_phone">Register with Phone</string>
+    <string name="don_t_have_account">Don\'t have account?</string>
 </resources>

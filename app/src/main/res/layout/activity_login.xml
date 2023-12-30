@@ -11,7 +11,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:src="@android:drawable/ic_lock_lock"
         android:contentDescription="@string/lock_logo" />
 
@@ -89,6 +89,26 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/holo_green_light"
         android:text="@string/login_with_phone"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textIfNoAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnPhoneLogin"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/don_t_have_account"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textIfNoAccount"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/holo_green_light"
+        android:text="@string/register"
         android:textColor="@android:color/white" />
 
 </RelativeLayout>
