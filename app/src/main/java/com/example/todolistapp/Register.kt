@@ -59,8 +59,11 @@ class Register : AppCompatActivity() {
                     }
                 }
             }
-            btnGoogleRegister.setOnClickListener {
 
+            btnLogin.setOnClickListener {
+                val intent = Intent(this@Register, Login::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }

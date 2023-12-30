@@ -35,6 +35,13 @@ class TodoAdapter(private val todos: MutableList<Todo>) : RecyclerView.Adapter<T
         notifyItemInserted(todos.size - 1)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setTodos(newTodos: List<Todo>) {
+        todos.clear()
+        todos.addAll(newTodos)
+        notifyDataSetChanged()
+    }
+
     private fun strikeThrough(tvTodoTitle: TextView, cbIsCheked: Boolean){
         if(cbIsCheked){
             tvTodoTitle.paintFlags = tvTodoTitle.paintFlags or STRIKE_THRU_TEXT_FLAG

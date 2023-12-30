@@ -18,4 +18,6 @@
     <string name="register_with_phone">Register with Phone</string>
     <string name="don_t_have_account">Don\'t have account?</string>
     <string name="logout">LogOut</string>
+    <string name="have_account">Have account?</string>
+    <string name="user_email">User Email:</string>
 </resources>
