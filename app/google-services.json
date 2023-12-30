@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "832898708882-cedrgrk3rhgitl67cj46ocrpvki5us07.apps.googleusercontent.com",
+          "client_id": "832898708882-t9rj1aje9n8m6om9c0bslchejune3788.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.todolist",
+            "certificate_hash": "4083498cec4ddaaf31776810edf34135e82d6fa1"
+          }
+        },
+        {
+          "client_id": "832898708882-38hrl063cmf44lhtjbc3sc0ok5q5fg52.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "832898708882-cedrgrk3rhgitl67cj46ocrpvki5us07.apps.googleusercontent.com",
+              "client_id": "832898708882-38hrl063cmf44lhtjbc3sc0ok5q5fg52.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -43,7 +51,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "832898708882-cedrgrk3rhgitl67cj46ocrpvki5us07.apps.googleusercontent.com",
+          "client_id": "832898708882-38hrl063cmf44lhtjbc3sc0ok5q5fg52.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -56,7 +64,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "832898708882-cedrgrk3rhgitl67cj46ocrpvki5us07.apps.googleusercontent.com",
+              "client_id": "832898708882-38hrl063cmf44lhtjbc3sc0ok5q5fg52.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

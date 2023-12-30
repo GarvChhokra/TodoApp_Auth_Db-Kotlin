@@ -15,7 +15,6 @@ class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val intent = Intent(this@Login, MainActivity::class.java)
@@ -62,6 +61,11 @@ class Login : AppCompatActivity() {
                         }
                 }
             }
+
+            // Get the SHID by going into the gradle from right hand side and by searching 'signingReport' and paste it into the Firebase
+//            btnGoogleLogin.setOnClickListener {
+//
+//            }
 
             btnRegister.setOnClickListener {
                 val intent = Intent(this@Login, Register::class.java)
