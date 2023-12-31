@@ -29,4 +29,4 @@ Follow the steps below to set up and run the Notes App on your local machine.
 1. Clone the repository to your local machine:
 
    ```bash
-   git [https://github.com/GarvChhokra/TodoApp_Auth_Db-Kotlin.git](https://github.com/GarvChhokra/TodoApp_Auth_Db-Kotlin.git)
+   git https://github.com/GarvChhokra/TodoApp_Auth_Db-Kotlin.git
