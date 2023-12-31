@@ -2,6 +2,7 @@
 
     import android.annotation.SuppressLint
     import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
+    import android.util.Log
     import android.view.LayoutInflater
     import android.view.ViewGroup
     import android.widget.CheckBox
@@ -25,7 +26,16 @@
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
             val binding = ActivityTodoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return TodoViewHolder(binding)
+            val viewHolder = TodoViewHolder(binding)
+
+            viewHolder.binding.cbIsChecked.setOnCheckedChangeListener { _, isChecked ->
+                val curTodo = todos[viewHolder.adapterPosition]
+                strikeThrough(viewHolder.binding.tvTodoTitle, isChecked)
+                curTodo.is_Checked = isChecked
+                updateCheckedDB(curTodo)
+            }
+
+            return viewHolder
         }
 
         override fun getItemCount(): Int {
@@ -66,7 +76,6 @@
             notifyDataSetChanged()
         }
 
-
         fun AddTodos(todo: Todo){
             todos.add(todo)
             notifyItemInserted(todos.size - 1)
@@ -79,8 +88,8 @@
             notifyDataSetChanged()
         }
 
-        private fun strikeThrough(tvTodoTitle: TextView, cbIsCheked: Boolean){
-            if(cbIsCheked){
+        private fun strikeThrough(tvTodoTitle: TextView, isChecked: Boolean){
+            if(isChecked){
                 tvTodoTitle.paintFlags = tvTodoTitle.paintFlags or STRIKE_THRU_TEXT_FLAG
             }
             else{
@@ -96,18 +105,13 @@
 
                 // Update the strikethrough based on the isChecked value
                 strikeThrough(tvTodoTitle, curTodo.is_Checked)
-
-                cbIsChecked.setOnCheckedChangeListener { _, isChecked ->
-                    strikeThrough(tvTodoTitle, isChecked)
-                    curTodo.is_Checked = isChecked
-                    updateCheckedDB(curTodo)
-                }
             }
         }
 
         fun encodeEmail(email: String?): String? {
             return email?.replace(".", ",")
         }
+
         private fun updateCheckedDB(curTodo: Todo) {
             auth = Firebase.auth
             val currentUser = auth.currentUser
@@ -121,6 +125,4 @@
                 todosRef.child(todoId).child("_Checked").setValue(curTodo.is_Checked)
             }
         }
-
-
     }
