@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
             btnAddTodo.setOnClickListener {
                 val todoTitle = textView.text.toString()
                 if(todoTitle.isNotEmpty()){
-                    val todo = Todo(todoTitle)
                     val encodedEmail = encodeEmail(currentUser?.email)
                     val todosRef = database.child("todos").child(encodedEmail?: "default")
                     val todoKey = todosRef.push().key
+                    val todo = Todo(id = todoKey.toString(), title = todoTitle, is_Checked = false)
                     if (todoKey != null) {
                         todosRef.child(todoKey).setValue(todo)
                     }
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
             if(currentUser!=null){
                 tvEmailAddress.text = currentUser.email
-                loadTodosFromDatabase(currentUser?.email ?: "default")
+                loadTodosFromDatabase(currentUser.email ?: "default")
             }
             else{
                 val intent = Intent(this@MainActivity, Login::class.java)
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun encodeEmail(email: String?): String? {
+    fun encodeEmail(email: String?): String? {
         return email?.replace(".", ",")
     }
     private fun loadTodosFromDatabase(userEmail: String) {
@@ -82,11 +82,16 @@ class MainActivity : AppCompatActivity() {
 
                 // Iterate through the todos in the database and add them to the list
                 for (todoSnapshot in snapshot.children) {
-                    val todo = todoSnapshot.getValue(Todo::class.java)
-                    if (todo != null) {
+                    val todoId = todoSnapshot.key
+                    val title = todoSnapshot.child("title").getValue(String::class.java)
+                    val isChecked = todoSnapshot.child("_Checked").getValue(Boolean::class.java)
+
+                    if (todoId != null && title != null && isChecked != null) {
+                        val todo = Todo(id = todoId, title = title, is_Checked = isChecked)
                         loadedTodos.add(todo)
                     }
                 }
+
 
                 // Update the adapter with the loaded todos
                 todoAdapter.setTodos(loadedTodos)
